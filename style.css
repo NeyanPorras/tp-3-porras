@@ -185,7 +185,7 @@ footer {
   display: flex;
   flex-direction: row; /* Eje principal horizontal */
   flex-wrap: wrap; /* Si no entran, bajan */
-  justify-content: center; /* Alineados al centro */
+  justify-content: center; 
   align-items: stretch; /* Estira las tarjetas para que tengan el mismo alto */
   gap: 1.5rem; /* Separación entre tarjetas */
   width: 100%;
@@ -226,13 +226,13 @@ footer {
   line-height: 1.4;
 }
 
-/* Layout divido en columnas */
+/* Layout dividido en columnas */
 .split-layout {
   display: flex;
   gap: 2rem;
   width: 100%;
   max-width: 1200px;
-  flex-wrap: wrap; /* Si no entran, bajan */
+  flex-wrap: wrap; 
   align-items: flex-start;
 }
 
