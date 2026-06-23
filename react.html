@@ -3,10 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ejercicio 3 - Registro de Personas (React)</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Carga de React 18 y ReactDOM -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <!-- Babel Standalone para compilar JSX directamente en el navegador -->
+    <script src="https://unpkg.com/@babel/standalone@7.21.3/babel.min.js"></script>
   </head>
   <body>
-    <a href="index.html">React</a>
-    
+    <header>
+      <a href="index.html" class="btn-back">&larr; Volver al Inicio</a>
+      <h1>Ejercicio 3: Personas (React)</h1>
+      <p>Replicando funcionalidad usando componentes y estados</p>
+    </header>
+
+    <main>
+      <div id="root"></div>
+    </main>
+
+    <footer>
+      <p>Desarrollado por Neyan Porras &copy; 2026</p>
+    </footer>
+
+    <script type="text/babel">
+      function App() {
+        return (
+          <div>
+            <h2>Ejercicio 3: Personas (React)</h2>
+          </div>
+        )
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById('root'))
+      root.render(<App />)
+    </script>
   </body>
 </html>
