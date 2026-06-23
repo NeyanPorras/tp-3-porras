@@ -74,6 +74,16 @@
           setPeso('')
         }
 
+        // Funcion para eliminar personas del estado
+        const handleEliminar = (id) => {
+          // Filtramos la lista, dejando solo las personas que No coinciden con el ID seleccionado
+          const personasFiltradas = personas.filter(
+            (persona) => persona.id !== id
+          )
+
+          setPersonas(personasFiltradas)
+        }
+
         return (
           <div className='split-layout'>
             {/* Formulario */}
@@ -148,7 +158,7 @@
                 </button>
               </form>
             </section>
-            
+
             {/* Tabla de Personas */}
             <section className='table-section'>
               <h2>Listado de Personas (React)</h2>
@@ -174,7 +184,12 @@
                       <td>{persona.peso} kg</td>
                       <td>{persona.imc}</td>
                       <td>
-                        <button className='btn-delete'>Eliminar</button>
+                        <button
+                          className='btn-delete'
+                          onClick={() => handleEliminar(persona.id)}
+                        >
+                          Eliminar
+                        </button>
                       </td>
                     </tr>
                   ))}
