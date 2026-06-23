@@ -3,9 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    ;
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a href="index.html">React</a>
+    <header>
+      <a href="index.html" class="btn-back">&larr; Volver al Inicio</a>
+      <h1>Ejercicio 1: Flexbox</h1>
+      <p>Tarjetas dinámicas y responsivas</p>
+    </header>
+
+    <main>
+      <div class="controls-container">
+        <button id="btn-filter" class="btn-control">Filtrar destacados</button>
+        <button id="btn-sort" class="btn-control">Ordenar A-Z</button>
+        <button id="btn-reset" class="btn-control">Restablecer</button>
+      </div>
+
+      <!-- Contenedor donde se cargaran las tarjetas -->
+      <div id="flex-cards-container" class="flex-container"></div>
+
+      <footer>
+        <p>Desarrollado por Neyan Porras &copy; 2026</p>
+      </footer>
+
+      <script src="flexbox.js"></script>
+    </main>
   </body>
 </html>
