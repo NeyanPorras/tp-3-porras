@@ -35,14 +35,161 @@
     </footer>
 
     <script type="text/babel">
+      const { useState } = React
+
       function App() {
+        const [personas, setPersonas] = useState([])
+
+        // Estados individuales para los campos del formulario
+        const [nombre, setNombre] = useState('')
+        const [apellido, setApellido] = useState('')
+        const [edad, setEdad] = useState('')
+        const [altura, setAltura] = useState('')
+        const [peso, setPeso] = useState('')
+
+        const handleSubmit = (e) => {
+          e.preventDefault()
+
+          const alt = parseFloat(altura)
+          const pes = parseFloat(peso)
+
+          const imc = (pes / (alt * alt)).toFixed(2)
+
+          const nuevaPersona = {
+            id: Date.now(),
+            nombre: nombre.trim(),
+            apellido: apellido.trim(),
+            edad: parseInt(edad, 10),
+            altura: alt,
+            peso: pes,
+            imc
+          }
+
+          setPersonas([...personas, nuevaPersona])
+
+          setNombre('')
+          setApellido('')
+          setEdad('')
+          setAltura('')
+          setPeso('')
+        }
+
         return (
-          <div>
-            <h2>Ejercicio 3: Personas (React)</h2>
+          <div className='split-layout'>
+            {/* Formulario */}
+            <section className='form-section'>
+              <h2>Nueva Persona (React)</h2>
+              <form onSubmit={handleSubmit}>
+                <div className='form-group'>
+                  <label>Nombre</label>
+                  <input
+                    type='text'
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    required
+                    placeholder='Ej: Pepe'
+                  />
+                </div>
+
+                <div class='form-group'>
+                  <label>Apellido</label>
+                  <input
+                    type='text'
+                    value={apellido}
+                    onChange={(e) => setApellido(e.target.value)}
+                    required
+                    placeholder='Ej: Grillo'
+                  />
+                </div>
+
+                <div class='form-group'>
+                  <label>Edad</label>
+                  <input
+                    type='number'
+                    value={edad}
+                    onChange={(e) => setEdad(e.target.value)}
+                    required
+                    min='1'
+                    max='120'
+                    placeholder='Ej: 21'
+                  />
+                </div>
+
+                <div class='form-group'>
+                  <label>Altura (metros)</label>
+                  <input
+                    type='number'
+                    value={altura}
+                    onChange={(e) => setAltura(e.target.value)}
+                    required
+                    min='0.5'
+                    max='2.5'
+                    step='0.01'
+                    placeholder='Ej: 1.75'
+                  />
+                </div>
+
+                <div class='form-group'>
+                  <label>Peso (kg)</label>
+                  <input
+                    type='number'
+                    value={peso}
+                    onChange={(e) => setPeso(e.target.value)}
+                    required
+                    min='2'
+                    max='300'
+                    step='0.1'
+                    placeholder='Ej: 72.5'
+                  />
+                </div>
+
+                <button type='submit' className='btn btn-submit'>
+                  Registrar Persona
+                </button>
+              </form>
+            </section>
+            
+            {/* Tabla de Personas */}
+            <section className='table-section'>
+              <h2>Listado de Personas (React)</h2>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Edad</th>
+                    <th>Altura</th>
+                    <th>Peso</th>
+                    <th>IMC</th>
+                    <th>Acción</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {personas.map((persona) => (
+                    <tr key={persona.id}>
+                      <td>{persona.nombre}</td>
+                      <td>{persona.apellido}</td>
+                      <td>{persona.edad}</td>
+                      <td>{persona.altura} m</td>
+                      <td>{persona.peso} kg</td>
+                      <td>{persona.imc}</td>
+                      <td>
+                        <button className='btn-delete'>Eliminar</button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+
+              {personas.length === 0 && (
+                <p id='tabla-vacia' className='text-muted'>
+                  No hay personas registradas aún.
+                </p>
+              )}
+            </section>
           </div>
         )
       }
-
       const root = ReactDOM.createRoot(document.getElementById('root'))
       root.render(<App />)
     </script>
