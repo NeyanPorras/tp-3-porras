@@ -3,9 +3,107 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Ejercicio 2 - Registro de Personas</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <a href="index.html">React</a>
+    <header>
+      <a href="index.html" class="btn-back">&larr; Volver al Inicio</a>
+      <h1>Ejercicio 2: Personas (DOM)</h1>
+      <p>Carga de personas y cálculo automático del IMC</p>
+    </header>
+
+    <main>
+      <div class="split-layout">
+        <!-- Columna 1: Formulario -->
+        <section class="form-section">
+          <h2>Nueva Persona</h2>
+          <form id="form-persona">
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" required placeholder="Ej: Neyan" />
+            </div>
+
+            <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input
+                type="text"
+                id="apellido"
+                required
+                placeholder="Ej: Porras"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="edad">Edad</label>
+              <input
+                type="number"
+                id="edad"
+                required
+                min="1"
+                max="120"
+                placeholder="Ej: 21"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="altura">Altura (metros)</label>
+              <input
+                type="number"
+                id="altura"
+                required
+                min="0.5"
+                max="2.5"
+                step="0.01"
+                placeholder="Ej: 1.75"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="peso">Peso (kg)</label>
+              <input
+                type="number"
+                id="peso"
+                required
+                min="2"
+                max="300"
+                step="0.1"
+                placeholder="Ej: 72.5"
+              />
+            </div>
+
+            <button type="submit" class="btn btn-submit">
+              Registrar Persona
+            </button>
+          </form>
+        </section>
+        <!-- Columna 2: Tabla -->
+        <section class="table-section">
+          <h2>Listado de Personas</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Edad</th>
+                <th>Altura</th>
+                <th>Peso</th>
+                <th>IMC</th>
+              </tr>
+            </thead>
+            <tbody id="tabla-body">
+              <!-- Las filas seran creadas dinamicamente con JavaScript -->
+            </tbody>
+          </table>
+          <p id="tabla-vacia" class="text-muted">
+            No hay personas registradas aún.
+          </p>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <p>Desarrollado por Neyan Porras &copy; 2026</p>
+    </footer>
+    <script src="personas.js"></script>
   </body>
 </html>
