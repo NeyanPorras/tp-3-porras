@@ -49,7 +49,6 @@ const items = [
   }
 ]
 
-
 const container = document.getElementById('flex-cards-container')
 
 // Función para renderizar las tarjetas en el DOM
@@ -57,11 +56,9 @@ function renderCards(elements) {
   container.innerHTML = '' // Limpiamos el contenedor por si había tarjetas previas
 
   elements.forEach((item) => {
-    // Creamos el elemento div de la tarjeta
     const card = document.createElement('div')
     card.classList.add('dynamic-card')
 
-    // Si es destacado, agregamos la clase highlight para el borde violeta
     if (item.destacado) {
       card.classList.add('highlight')
     }
@@ -78,3 +75,24 @@ function renderCards(elements) {
 }
 
 renderCards(items)
+
+const btnFilter = document.getElementById('btn-filter')
+const btnSort = document.getElementById('btn-sort')
+const btnReset = document.getElementById('btn-reset')
+
+btnFilter.addEventListener('click', () => {
+  const filteredItems = items.filter((item) => item.destacado)
+  renderCards(filteredItems)
+})
+
+btnSort.addEventListener('click', () => {
+  // Copiamos el array con [...] para no modificar el original
+  const sortedItems = [...items].sort((a, b) =>
+    a.titulo.localeCompare(b.titulo)
+  )
+  renderCards(sortedItems)
+})
+
+btnReset.addEventListener('click', () => {
+  renderCards(items)
+})
